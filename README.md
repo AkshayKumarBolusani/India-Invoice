@@ -1,264 +1,115 @@
-::: {align="center"}
+<div align="center">
+
 # India Invoice AI
 
-**Review-first invoice intelligence for extraction, arithmetic checks,
-and Indian GST workflows.**
+**Review-first invoice intelligence: extraction, arithmetic checks, and GST-aware human review.**
 
-```{=html}
-<p>
-```
-`<img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python 3.12">`{=html}
-`<img src="https://img.shields.io/badge/API-FastAPI-009688?logo=fastapi&logoColor=white" alt="FastAPI">`{=html}
-`<img src="https://img.shields.io/badge/UI-React%20%2B%20Vite-61DAFB?logo=react&logoColor=111827" alt="React and Vite">`{=html}
-`<img src="https://img.shields.io/badge/Validation-Decimal%20based-6C5CE7" alt="Decimal-based validation">`{=html}
-`<img src="https://img.shields.io/badge/LLM-Local%20and%20optional-16A085" alt="Optional local LLM">`{=html}
-```{=html}
-</p>
-```
-[Quick start](#quick-start) · [Screenshots](#screenshots) ·
-[Architecture](#architecture) · [Evaluation](#evaluation) · [API](#api)
-· [Documentation](#documentation)
-:::
+![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?logo=fastapi&logoColor=white)
+![React + Vite](https://img.shields.io/badge/UI-React%20%2B%20Vite-61DAFB?logo=react&logoColor=111827)
+![Decimal validation](https://img.shields.io/badge/Validation-Decimal%20based-6C5CE7)
+![Optional local LLM](https://img.shields.io/badge/LLM-Local%20and%20optional-16A085)
 
-India Invoice AI is a local-first document-processing project for
-extracting invoice data, checking arithmetic, reviewing tax allocations,
-and keeping uncertain fields visible to a human reviewer.
-
-It combines a deterministic rules baseline with an optional
-OpenAI-compatible local LLM path, a shared Pydantic schema,
-Decimal-based validation, conservative duplicate-tax review, and
-explicit review states. **It is a review aid, not a GST compliance
-certification system.**
-
-## At a glance
-
--   **Ingest:** PDFs, text files, and supported image formats through
-    the document ingestion/OCR path.
--   **Extract:** Normalize document content and extract structured
-    invoice fields and line items.
--   **Validate:** Check required fields, arithmetic consistency, and
-    supported GST-related signals.
--   **Review:** Preserve source values, surface missing evidence, and
-    record tax-review corrections.
--   **Compare:** Separate missing values, substantive differences, and
-    formatting-only differences.
--   **Evaluate:** Audit datasets and report what the evidence does---and
-    does not---establish.
-
-## Screenshots
-
-These screenshots show the local application interface. Operational
-figures and example invoice values should be interpreted according to
-the labels and source reports in the application; demo or audit data is
-not a claim of real-world accuracy.
-
-### Overview dashboard
-
-![India Invoice AI overview dashboard](docs/screenshots/dashboard.png)
-
-### Invoice workspace
-
-Inspect extracted fields, line items, totals, and validation warnings
-before relying on the output.
+[Quick start](#quick-start) · [Screenshots](#screenshots) · [Architecture](#architecture) · [Evaluation](#evaluation) · [API](#api) · [Docs](#documentation)
 
 ![Invoice workspace](docs/screenshots/invoice-processing.png)
 
-### Human review center
+</div>
 
-Missing evidence, arithmetic concerns, and unsupported tax allocations
-remain visible for review.
+> A local-first system that keeps **extraction, validation, tax review, and human judgment separate**.
+> It is a review aid, **not** a GST compliance certification tool, and it never treats parser output as ground truth.
 
-![Human review center](docs/screenshots/review-center.png)
+## Why this exists
 
-### Extractor comparison
+Invoice automation is easy to demo and hard to trust. Valid JSON can hide wrong totals, duplicated line-level tax, missing GST evidence, and OCR errors. India Invoice AI is built so those failure modes stay visible instead of being silently "fixed".
 
-Compare rules-based and LLM outputs while keeping missing fields and
-formatting differences separate from substantive mismatches.
+**Design principles**
 
-![Extractor comparison](docs/screenshots/extractor-comparison.png)
+- **Never invent values.** CGST, SGST, IGST, GST rates, GSTINs, and HSN/SAC codes are not inferred without evidence. A generic `tax_amount` is never mapped to a specific tax head.
+- **Decimal arithmetic only.** All money math uses `Decimal`; reconciliation checks are explicit.
+- **Reconciled does not mean correct.** A total that adds up does not prove a tax rate or allocation is right, and the system says so.
+- **Humans stay in the loop.** Uncertain fields, warnings, and corrections are surfaced and recorded.
 
-### Batch processing
+## What it does
 
-Review per-document status, totals, processing time, and batch export
-results.
+| Stage | What happens |
+|---|---|
+| **Ingest** | PDF, TXT, PNG, JPEG, WebP, TIFF, BMP via Docling and RapidOCR |
+| **Extract** | Deterministic rules baseline, or an optional OpenAI-compatible local LLM |
+| **Validate** | Required fields, GSTIN format, arithmetic consistency, GST-related signals |
+| **Tax review** | Clears strong duplicated line-level tax patterns, preserves invoice totals, records a warning |
+| **Review** | Source values, missing evidence, and correction history stay visible |
+| **Compare** | Rules vs LLM output, split into missing, substantive, and formatting-only differences |
+| **Batch** | Per-document status and totals, with failures isolated |
+| **Audit** | Scripts that audit public datasets and report what the evidence does and does not establish |
 
-![Batch processing](docs/screenshots/batch-processing.png)
+## Screenshots
 
-### Evaluation lab
+Screenshots show the local interface with synthetic or demo data. They are **not** claims of real-world accuracy.
 
-Inspect dataset audit results without confusing structural parsing with
-verified accuracy.
+| Overview | Human review center |
+|---|---|
+| ![Dashboard](docs/screenshots/dashboard.png) | ![Review center](docs/screenshots/review-center.png) |
 
-![Evaluation lab](docs/screenshots/evaluation.png)
+| Extractor comparison | Batch processing |
+|---|---|
+| ![Comparison](docs/screenshots/extractor-comparison.png) | ![Batch](docs/screenshots/batch-processing.png) |
 
-### System health
-
-Inspect local backend connectivity and runtime configuration.
-
-![Settings and system health](docs/screenshots/settings-health.png)
-
-## What works today
-
-  -----------------------------------------------------------------------
-  Capability                          Status / boundary
-  ----------------------------------- -----------------------------------
-  PDF and TXT ingestion               Implemented in the shared ingestion
-                                      pipeline
-
-  PNG, JPEG, WebP, TIFF, and BMP      Supported where the installed
-  ingestion                           Docling/OCR path can decode the
-                                      image; OCR quality depends on image
-                                      and model conditions
-
-  OCR to normalized Markdown          Implemented with Docling and
-                                      RapidOCR in the tested local setup
-
-  Rules-based invoice extraction      Implemented
-
-  Optional local LLM extraction       Experimental and dependent on a
-                                      reachable compatible model endpoint
-
-  Arithmetic and GST-related          Conservative checks; arithmetic
-  validation                          reconciliation does not prove tax
-                                      correctness
-
-  Duplicate invoice-level tax review  Clears specific duplicated
-                                      line-level tax patterns, preserves
-                                      invoice totals, and records
-                                      warnings
-
-  Correction history and review       Available through the workflow and
-  warnings                            review UI
-
-  Rules-versus-LLM comparison         Implemented; agreement does not
-                                      establish correctness
-
-  Batch processing                    Implemented with per-document
-                                      results and isolated failures
-
-  FastAPI service                     Provides processing, batch,
-                                      comparison, health, and evaluation
-                                      endpoints
-
-  React/Vite interface                Primary UI; use live API mode for
-                                      real processing and treat any demo
-                                      fallback as demo data
-
-  Streamlit interface                 Compatibility interface remains
-                                      available
-
-  Public dataset auditing             Audit scripts produce structured
-                                      reports; public parser output is
-                                      not ground truth
-  -----------------------------------------------------------------------
+| Evaluation lab | System health |
+|---|---|
+| ![Evaluation](docs/screenshots/evaluation.png) | ![Health](docs/screenshots/settings-health.png) |
 
 ## Quick start
 
-### Prerequisites
+**Prerequisites:** Python 3.12 (tested path), Node.js and npm, optionally Ollama or another OpenAI-compatible endpoint for LLM extraction, and Docker only if you use Compose.
 
--   macOS/Linux or another supported Python environment
--   Python 3.12 for the tested local path
--   Node.js and npm for the React frontend
--   Optional: Ollama or another compatible endpoint for LLM extraction
--   Docker Desktop only if using Docker Compose
+### 1. Python environment
 
-### 1. Set up Python
-
-From the repository root:
-
-``` bash
+```bash
+git clone <your-repository-url>
+cd india-invoice-ai
 python3.12 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 cp .env.example .env
 ```
 
-No cloud credentials are required for the rules-based workflow. The
-first image conversion may initialize or download local OCR/model
-assets.
+No cloud credentials are needed for the rules-based workflow. The first image conversion may download or initialize local OCR models.
 
 ### 2. Start the API
 
-In Terminal 1, from the repository root:
-
-``` bash
+```bash
 .venv/bin/uvicorn api:app --reload --port 8000
-```
-
-Check health:
-
-``` bash
 curl http://localhost:8000/api/health
 ```
 
-### 3. Start the React frontend
+### 3. Start the React UI
 
-In Terminal 2:
-
-``` bash
+```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-Open <http://localhost:5173>.
+Open <http://localhost:5173>. If the API is unreachable, the UI shows a clearly labelled **demo snapshot**; treat those values as demonstration data, not live inference.
 
-For actual invoice processing, confirm the frontend is connected to the
-running API. If the API is unavailable and the interface shows a demo
-snapshot, treat those values as demonstration data rather than live
-inference.
+### 4. Or use the Streamlit app
 
-### 4. Or run the Streamlit compatibility app
-
-From the repository root:
-
-``` bash
+```bash
 .venv/bin/streamlit run app.py
 ```
 
-Use the sample PDFs under `data/samples/` or upload a supported document
-through the UI.
+### Try it
 
-## Common workflows
-
-### Process one invoice through the API
-
-``` bash
+```bash
 curl -X POST "http://localhost:8000/api/process?engine=rules-based" \
   -F "file=@data/samples/INV-003.pdf"
 ```
 
-The API response is structured output from the configured workflow.
-Review the status and warnings rather than assuming that a successful
-response proves every field is correct.
-
-### Process a batch
-
-Use the batch endpoint:
-
-``` text
-POST /api/batch?engine=rules-based|llm
-```
-
-Submit multiple files as multipart form data. Check the API
-implementation for the exact field name and configured limits before
-integrating a client.
-
-### Compare extraction engines
-
-Use:
-
-``` text
-POST /api/compare
-```
-
-Comparison requires the relevant extraction paths and model endpoint to
-be available. If local LLM inference is unavailable, the application
-should report that failure rather than treating demo values as a real
-comparison.
+Always review the returned status and warnings. A successful response does not prove every field is correct.
 
 ## Architecture
 
-``` mermaid
+```mermaid
 flowchart LR
     Upload[PDF / TXT / image] --> Ingest[Docling ingestion and OCR]
     Ingest --> Markdown[Normalized Markdown]
@@ -267,7 +118,7 @@ flowchart LR
     Rules --> Schema[Pydantic invoice schema]
     LLM --> Review[Duplicate-tax review]
     Review --> Schema
-    Schema --> Validate[Decimal arithmetic and GST-related checks]
+    Schema --> Validate[Decimal arithmetic and GST checks]
     Validate --> Human[Human review and comparison]
     Human --> Export[Results and exports]
     Human --> Eval[Evaluation and dataset audit]
@@ -276,121 +127,42 @@ flowchart LR
     Streamlit[Streamlit compatibility UI] --> Ingest
 ```
 
-### Main modules
-
-  ------------------------------------------------------------------------
-  Module                               Responsibility
-  ------------------------------------ -----------------------------------
-  `src/invoice_ai/ingestion.py`        Validates files and converts
-                                       supported documents/images to
-                                       normalized content
-
-  `src/invoice_ai/extraction.py`       Rules-based extraction from
-                                       normalized content
-
-  `src/invoice_ai/llm_extraction.py`   Optional extraction through a
-                                       compatible local LLM endpoint
-
-  `src/invoice_ai/schemas.py`          Typed invoice and line-item schema
-
-  `src/invoice_ai/validation.py`       Required-field, arithmetic, and
-                                       supported GST-related checks
-
-  `src/invoice_ai/tax_review.py`       Conservative handling of suspicious
-                                       duplicated line-level tax amounts
-
-  `src/invoice_ai/comparison.py`       Compares outputs and separates
-                                       missing, substantive, and
-                                       formatting differences
-
-  `src/invoice_ai/workflow.py`         Shared orchestration and processing
-                                       metadata
-
-  `api.py`                             FastAPI service boundary
-
-  `app.py`                             Streamlit compatibility interface
-
-  `frontend/`                          React, TypeScript, and Vite
-                                       application
-
-  `scripts/`                           Benchmarking, dataset auditing, and
-                                       evaluation utilities
-
-  `tests/`                             Unit and regression tests
-  ------------------------------------------------------------------------
-
-## Tax review and safety boundaries
-
-Invoice totals and line-item tax allocation are different questions. If
-the document presents a tax total at invoice level and the extraction
-engine duplicates that amount onto every line item, the review layer can
-clear the unsupported line-level values while preserving the
-invoice-level totals and recording a warning.
-
-The system deliberately avoids inferring CGST, SGST, IGST, GST rates,
-GSTINs, or HSN/SAC codes without sufficient evidence. A mathematically
-reconciled grand total does not prove that a tax rate or allocation is
-legally or factually correct.
-
-Use human review before relying on extracted values for accounting, tax
-filing, payment, or compliance decisions.
+| Module | Responsibility |
+|---|---|
+| `src/invoice_ai/ingestion.py` | File validation and conversion to normalized content |
+| `src/invoice_ai/extraction.py` | Rules-based extraction |
+| `src/invoice_ai/llm_extraction.py` | Optional LLM extraction via a compatible endpoint |
+| `src/invoice_ai/schemas.py` | Typed Decimal invoice and line-item schema |
+| `src/invoice_ai/validation.py` | Required-field, GSTIN, arithmetic, and tax checks |
+| `src/invoice_ai/tax_review.py` | Conservative handling of duplicated line-level tax |
+| `src/invoice_ai/comparison.py` | Extractor output comparison |
+| `src/invoice_ai/workflow.py` | Shared orchestration and processing metadata |
+| `api.py` / `app.py` / `frontend/` | FastAPI service, Streamlit app, React UI |
+| `scripts/` | Benchmarking, dataset auditing, synthetic data generation |
 
 ## Evaluation
 
-Evaluation is separated into synthetic regression tests and audits of
-public parser data. These sources answer different questions.
+Evaluation separates **synthetic regression tests** from **audits of public parser data**. They answer different questions, and neither is a real-world accuracy estimate.
 
-  -----------------------------------------------------------------------
-  Evidence                Reported result         What it means
-  ----------------------- ----------------------- -----------------------
-  Synthetic batch         56/56 fields across 3   Regression evidence for
-  regression              fixtures                constructed fixtures,
-                                                  not real-world accuracy
+| Evidence | Result | How to read it |
+|---|---|---|
+| Generated synthetic benchmark | 60 documents; 660/660 scalar fields; 180/180 line items; F1 = 1.0 | Deterministic and generated by this project's own templates. A perfect score here shows the pipeline handles those layouts, **not** that it generalizes |
+| Synthetic batch regression | 56/56 fields across 3 fixtures | Regression guard only |
+| Single-fixture baseline | 20/20 fields | Smoke test |
+| Public dataset audit | 1,348 records; 1,343 parsed | Structural audit of parser responses, not labels |
+| Public audit review rate | 1,331/1,348 flagged for manual review | Evidence is unresolved; this is not model accuracy |
+| Public audit arithmetic | 1,326 failure records; 2,686 skipped checks | Generic tax/adjustment semantics are unreliable in that data |
+| INV-003 comparison regression | 34 fields, 0 substantive, 7 formatting-only differences | Comparator behavior, not correctness |
 
-  Generated synthetic     60 documents; 660/660   Deterministic synthetic
-  benchmark               scalar fields; 180/180  benchmark; not a
-                          line items;             real-invoice accuracy
-                          precision/recall/F1 =   estimate
-                          1.0                     
+**Not yet measured:** accuracy on authorized real invoices, line-item precision/recall on real data, language-level accuracy, and LLM latency.
 
-  Synthetic baseline      20/20 fields on one     Single-fixture smoke
-                          fixture                 test only
+**Timing:** warm medians for the rules pipeline on three local sample PDFs were 0.58 s (INV-001), 0.45 s (INV-002), and 0.49 s (INV-003). These are local timings, not hosted performance claims.
 
-  Public saved dataset    1,348 records; 1,343    Structural audit of
-  audit                   parsed responses        parser responses, not
-                                                  verified invoice ground
-                                                  truth
+Machine-readable reports are in `evaluation/`. Confirm they are current before quoting numbers externally.
 
-  Public audit review     1,331/1,348 records     Indicates unresolved
-  rate                    marked for manual       evidence in this audit,
-                          review                  not model accuracy
+### Reproduce
 
-  Public audit arithmetic 1,326 failure records;  Generic tax/adjustment
-  checks                  2,686 skipped checks    semantics and source
-                                                  labels require careful
-                                                  interpretation
-
-  INV-003 comparison      34 fields, 0            Comparator behavior on
-  regression              substantive             a regression fixture,
-                          differences, 7          not proof that either
-                          formatting-only         extractor is correct
-                          differences             
-  -----------------------------------------------------------------------
-
-See `evaluation/` for the corresponding machine-readable reports.
-Confirm the reports are current before quoting these values in
-presentations or external material.
-
-The public parser data does not provide trustworthy Indian GST-specific
-ground truth for all relevant fields. Line-item precision/recall on
-authorized real invoices, language-level accuracy, and real-world
-accuracy are **not yet measured**.
-
-### Reproduce checks
-
-From the repository root:
-
-``` bash
+```bash
 .venv/bin/pytest -q
 .venv/bin/python scripts/run_extraction.py
 .venv/bin/python scripts/benchmark_pipeline.py
@@ -399,124 +171,75 @@ From the repository root:
 .venv/bin/python scripts/audit_dataset.py --dataset-name finvix/invoice
 ```
 
-The local benchmark previously recorded warm timings of 0.58 s for
-`INV-001`, 0.45 s for `INV-002`, and 0.49 s for `INV-003`, with a 0.49 s
-overall warm median. These are local rules-pipeline timings on three
-sample PDFs, not hosted performance guarantees or LLM latency results.
+## API
 
-## API reference
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `GET` | `/api/health` | Health status |
+| `POST` | `/api/process?engine=rules-based\|llm` | Process one invoice |
+| `POST` | `/api/batch?engine=rules-based\|llm` | Process multiple invoices |
+| `POST` | `/api/compare` | Compare extraction outputs |
+| `GET` | `/api/evaluation` | Read stored evaluation reports |
 
-The implemented service exposes these routes:
-
-  ----------------------------------------------------------------------------------------
-  Method                  Endpoint                                 Purpose
-  ----------------------- ---------------------------------------- -----------------------
-  `GET`                   `/api/health`                            Health status
-
-  `POST`                  `/api/process?engine=rules-based\|llm`   Process one invoice
-
-  `POST`                  `/api/batch?engine=rules-based\|llm`     Process multiple
-                                                                   invoices
-
-  `POST`                  `/api/compare`                           Compare extraction
-                                                                   outputs
-
-  `GET`                   `/api/evaluation`                        Read stored evaluation
-                                                                   information
-  ----------------------------------------------------------------------------------------
-
-Interactive API documentation is available at `/docs` while the FastAPI
-service is running, if enabled by the current configuration.
-
-Uploads are bounded by `MAX_UPLOAD_BYTES`, and batches by
-`MAX_BATCH_FILES`. Check `.env.example` and `api.py` for current
-configuration names and defaults.
+Interactive docs are available at `/docs` while the service runs. Uploads are bounded by `MAX_UPLOAD_BYTES` and batches by `MAX_BATCH_FILES`; see `.env.example` and `api.py` for defaults and the exact multipart field names.
 
 ## Docker
 
-Docker Compose configuration is provided, but container execution has
-not been verified in the documented environment because the Docker
-daemon was unavailable.
+Compose files are provided, but **container execution has not been verified** because no Docker daemon was available when this was written.
 
-``` bash
+```bash
 cp .env.example .env
 docker compose config
 docker compose up --build
 ```
 
-If the containers start successfully, open <http://localhost:8080>. The
-frontend Nginx container is configured to proxy `/api/` to FastAPI.
-Ollama is not bundled in the application containers; configure the model
-endpoint and model name using the variables documented in
-`.env.example`.
+If the containers start, open <http://localhost:8080>. Nginx proxies `/api/` to FastAPI. Ollama is not bundled; set the model endpoint and name in `.env`.
 
-## Privacy, security, and data provenance
+## Privacy and data provenance
 
--   Do not commit private invoices, credentials, API keys, or model
-    weights.
--   Invoice content and source Markdown should not be placed in logs or
-    public reports.
--   Use a permitted local LLM endpoint when invoice content must remain
-    local.
--   Dataset host labels do not automatically establish permission to
-    redistribute source documents or use them for training.
--   Keep unredacted customer invoices outside the repository and use
-    synthetic or appropriately authorized, redacted data for evaluation.
--   Review `.gitignore` and the dataset licence/provenance before
-    publishing the repository.
+- Invoice contents and source Markdown are kept out of logs and public reports.
+- LLM use is opt-in; point it at a local endpoint when invoices must stay on your machine.
+- Dataset host labels do not establish permission to redistribute or train on the source documents.
+- Keep unredacted customer invoices outside the repository. Use synthetic or properly authorized, redacted data for evaluation and screenshots.
+- Do not commit credentials, private invoices, or model weights.
 
 ## Known limitations
 
--   OCR quality depends on document quality, rotation, handwriting,
-    layout, and local OCR/model availability.
--   LLM extraction is optional and depends on the configured endpoint
-    being reachable.
--   Arithmetic reconciliation does not prove tax-rate or line-level tax
-    correctness.
--   Public parser responses are not equivalent to labelled ground truth.
--   The React interface may show a clearly labelled demo snapshot when
-    the API is unavailable; confirm live API status before capturing
-    workflow evidence.
--   Docker configuration has been provided, but container execution must
-    be verified in an environment with a working Docker daemon.
--   No real customer invoices should be used in public screenshots. See
-    `docs/DEMO_SCRIPT.md` for a safe demo workflow.
-
-## Documentation
-
--   [Architecture](docs/ARCHITECTURE.md)
--   [Evaluation methodology and limitations](docs/EVALUATION.md)
--   [Technical write-up](docs/TECHNICAL_WRITEUP.md)
--   [Demo script](docs/DEMO_SCRIPT.md)
+- OCR quality depends on scan quality, rotation, handwriting, layout, and local model availability.
+- Reconciled arithmetic does not prove tax-rate or line-level tax correctness.
+- The rules extractor has only been exercised on synthetic and sample layouts; real-world layout variety is untested.
+- LLM extraction requires a reachable compatible endpoint.
+- Public parser responses are not labelled ground truth.
+- Docker execution is unverified.
 
 ## Roadmap
 
--   Add authenticated, durable review history.
--   Preserve document-layout coordinates for source-level evidence.
--   Evaluate on permitted, redacted real invoices with trusted labels.
--   Add vendor/template-group-aware evaluation splits.
--   Add asynchronous jobs for larger batches.
--   Expand browser-level end-to-end tests against a running API.
+- Evaluate on permitted, redacted real invoices with trusted labels
+- Compare the rules baseline, a prompted LLM, and a fine-tuned small model on one labeled set
+- Vendor/template-aware evaluation splits
+- Region-level source evidence from document layout coordinates
+- Authenticated, durable review history
+- Asynchronous jobs for large batches
+- Browser-level end-to-end tests against a live API
+
+## Documentation
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Evaluation methodology and limitations](docs/EVALUATION.md)
+- [Technical write-up](docs/TECHNICAL_WRITEUP.md)
+- [Demo script](docs/DEMO_SCRIPT.md)
 
 ## Contributing
 
-Before submitting a change, run the relevant checks:
+Run the checks before opening a change:
 
-``` bash
+```bash
 .venv/bin/pytest -q
-cd frontend
-npm test
-npm run typecheck
-npm run build
+cd frontend && npm test && npm run typecheck && npm run build
 ```
 
-Keep synthetic tests separate from real-world claims, preserve privacy
-boundaries, and add regression tests for behavior changes. Do not commit
-credentials, private invoices, downloaded model weights, or unreviewed
-datasets.
+Keep synthetic tests separate from real-world claims, preserve privacy boundaries, and add a regression test for behavior changes.
 
 ## License
 
-No license file was present in the inspected project information. Until
-a license is added, do not assume that the repository's source code or
-datasets are licensed for unrestricted reuse.
+MIT. See [LICENSE](LICENSE).
