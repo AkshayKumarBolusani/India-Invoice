@@ -1,0 +1,14 @@
+docling
+Pillow>=10
+rapidocr
+datasets
+pydantic>=2.10,<3
+reportlab
+fastapi
+uvicorn[standard]
+python-multipart
+streamlit
+pandas
+pytest
+python-dotenv
+openai

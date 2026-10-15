@@ -1,0 +1,36 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+.env.*
+!.env.example
+.DS_Store
+
+data/raw/*
+data/processed/*
+data/labels/*
+data/samples/*
+
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/labels/.gitkeep
+!data/samples/.gitkeep
+
+models/*
+!models/.gitkeep
+
+evaluation/results/
+*.log
+
+# Private invoice documents and dataset exports
+data/datasets/authorized_redacted/*
+!data/datasets/authorized_redacted/.gitkeep
+
+# Dataset exports and generated artifacts
+data/datasets/processed/*
+!data/datasets/processed/.gitkeep
+data/datasets/public/*
+
+# Real-world evaluation documents and labels
+evaluation/real_world/*
+!evaluation/real_world/.gitkeep

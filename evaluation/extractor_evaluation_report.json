@@ -1,0 +1,158 @@
+{
+  "note": "Field accuracy is against the included synthetic fixtures only; not production accuracy or GST certification.",
+  "invoices": {
+    "INV-001.pdf": {
+      "rules": {
+        "fields_scored": 34,
+        "correct_fields": 34,
+        "mismatch_count": 0,
+        "field_accuracy": 1.0,
+        "mismatches": []
+      },
+      "ollama": {
+        "fields_scored": 34,
+        "correct_fields": 28,
+        "mismatch_count": 6,
+        "field_accuracy": 0.8235,
+        "mismatches": [
+          {
+            "field": "items[0].cgst_amount",
+            "expected": null,
+            "predicted": "198"
+          },
+          {
+            "field": "items[0].gst_rate",
+            "expected": null,
+            "predicted": "9"
+          },
+          {
+            "field": "items[0].sgst_amount",
+            "expected": null,
+            "predicted": "198"
+          },
+          {
+            "field": "items[1].cgst_amount",
+            "expected": null,
+            "predicted": "198"
+          },
+          {
+            "field": "items[1].gst_rate",
+            "expected": null,
+            "predicted": "9"
+          },
+          {
+            "field": "items[1].sgst_amount",
+            "expected": null,
+            "predicted": "198"
+          }
+        ]
+      },
+      "reported_comparison": {
+        "fields_compared": 34,
+        "substantive_differences": 13,
+        "formatting_only_differences": 0,
+        "ollama_latency_seconds": 27.379
+      }
+    },
+    "INV-002.pdf": {
+      "rules": {
+        "fields_scored": 24,
+        "correct_fields": 24,
+        "mismatch_count": 0,
+        "field_accuracy": 1.0,
+        "mismatches": []
+      },
+      "ollama": {
+        "fields_scored": 24,
+        "correct_fields": 22,
+        "mismatch_count": 2,
+        "field_accuracy": 0.9167,
+        "mismatches": [
+          {
+            "field": "items[0].gst_rate",
+            "expected": null,
+            "predicted": "18"
+          },
+          {
+            "field": "items[0].igst_amount",
+            "expected": null,
+            "predicted": "180.00"
+          }
+        ]
+      },
+      "reported_comparison": {
+        "fields_compared": 24,
+        "substantive_differences": 2,
+        "formatting_only_differences": 0,
+        "ollama_latency_seconds": 21.763
+      }
+    },
+    "INV-003.pdf": {
+      "rules": {
+        "fields_scored": 34,
+        "correct_fields": 34,
+        "mismatch_count": 0,
+        "field_accuracy": 1.0,
+        "mismatches": []
+      },
+      "ollama": {
+        "fields_scored": 34,
+        "correct_fields": 28,
+        "mismatch_count": 6,
+        "field_accuracy": 0.8235,
+        "mismatches": [
+          {
+            "field": "items[0].cgst_amount",
+            "expected": null,
+            "predicted": "45"
+          },
+          {
+            "field": "items[0].gst_rate",
+            "expected": null,
+            "predicted": "3"
+          },
+          {
+            "field": "items[0].sgst_amount",
+            "expected": null,
+            "predicted": "45"
+          },
+          {
+            "field": "items[1].cgst_amount",
+            "expected": null,
+            "predicted": "45"
+          },
+          {
+            "field": "items[1].gst_rate",
+            "expected": null,
+            "predicted": "3"
+          },
+          {
+            "field": "items[1].sgst_amount",
+            "expected": null,
+            "predicted": "45"
+          }
+        ]
+      },
+      "reported_comparison": {
+        "fields_compared": 34,
+        "substantive_differences": 6,
+        "formatting_only_differences": 6,
+        "ollama_latency_seconds": 13.467
+      }
+    }
+  },
+  "aggregate": {
+    "rules": {
+      "fields_scored": 92,
+      "correct_fields": 92,
+      "mismatch_count": 0,
+      "field_accuracy": 1.0
+    },
+    "ollama": {
+      "fields_scored": 92,
+      "correct_fields": 78,
+      "mismatch_count": 14,
+      "field_accuracy": 0.8478
+    }
+  }
+}

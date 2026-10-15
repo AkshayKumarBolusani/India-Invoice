@@ -1,0 +1,36 @@
+
+from pathlib import Path
+
+from docling.document_converter import DocumentConverter
+
+
+SUPPORTED_DOCLING_FORMATS = {".pdf", ".png", ".jpg", ".jpeg", ".tiff", ".bmp"}
+
+
+def extract_document(file_path: str) -> dict:
+    path = Path(file_path)
+
+    if not path.is_file():
+        raise FileNotFoundError(f"Document not found: {path}")
+
+    suffix = path.suffix.lower()
+
+    if suffix == ".txt":
+        markdown = path.read_text(encoding="utf-8")
+        method = "direct_text"
+
+    elif suffix in SUPPORTED_DOCLING_FORMATS:
+        converter = DocumentConverter()
+        result = converter.convert(str(path))
+        markdown = result.document.export_to_markdown()
+        method = "docling"
+
+    else:
+        raise ValueError(f"Unsupported document format: {suffix}")
+
+    return {
+        "filename": path.name,
+        "markdown": markdown,
+        "text_length": len(markdown),
+        "method": method,
+    }

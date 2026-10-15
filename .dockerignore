@@ -1,0 +1,17 @@
+.git
+.gitignore
+.venv
+__pycache__
+.pytest_cache
+.env
+node_modules
+frontend/dist
+data/datasets
+ data/raw
+ data/processed
+data/labels
+data/samples
+models
+evaluation/real_world
+*.log
+.DS_Store

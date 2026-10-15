@@ -1,0 +1,245 @@
+{
+  "test_type": "synthetic_fixture_comparison",
+  "note": "Synthetic fixtures only; this is not real-world accuracy.",
+  "model": "qwen2.5vl:7b",
+  "documents": [
+    {
+      "document_id": "INV-001",
+      "rules": {
+        "correct_fields": 34,
+        "total_fields": 34,
+        "field_accuracy": 1.0,
+        "mismatches": []
+      },
+      "llm": {
+        "correct_fields": 34,
+        "total_fields": 34,
+        "field_accuracy": 1.0,
+        "mismatches": []
+      },
+      "llm_metadata": {
+        "model": "qwen2.5vl:7b",
+        "latency_seconds": 25.515,
+        "input_tokens": 1548,
+        "output_tokens": 345
+      },
+      "llm_prediction": {
+        "document_type": "gst_invoice",
+        "invoice_number": "INV-2026-001",
+        "invoice_date": "14/10/2026",
+        "vendor_name": "Sri Lakshmi Office Supplies",
+        "vendor_gstin": "36ABCDE1234F1Z5",
+        "buyer_name": "Example Technologies Pvt Ltd",
+        "buyer_gstin": null,
+        "currency": "INR",
+        "items": [
+          {
+            "description": "Office Paper",
+            "hsn_sac": null,
+            "quantity": "2",
+            "unit_price": "500.00",
+            "taxable_value": "1000.00",
+            "gst_rate": null,
+            "cgst_amount": null,
+            "sgst_amount": null,
+            "igst_amount": null,
+            "total_amount": null
+          },
+          {
+            "description": "Printer Cartridge",
+            "hsn_sac": null,
+            "quantity": "1",
+            "unit_price": "1200.00",
+            "taxable_value": "1200.00",
+            "gst_rate": null,
+            "cgst_amount": null,
+            "sgst_amount": null,
+            "igst_amount": null,
+            "total_amount": null
+          }
+        ],
+        "subtotal": "2200.00",
+        "total_cgst": "198.00",
+        "total_sgst": "198.00",
+        "total_igst": "0.00",
+        "grand_total": "2596.00"
+      }
+    },
+    {
+      "document_id": "INV-002",
+      "rules": {
+        "correct_fields": 24,
+        "total_fields": 24,
+        "field_accuracy": 1.0,
+        "mismatches": []
+      },
+      "llm": {
+        "correct_fields": 22,
+        "total_fields": 24,
+        "field_accuracy": 0.9166666666666666,
+        "mismatches": [
+          {
+            "field": "items[0].gst_rate",
+            "expected": null,
+            "actual": "18"
+          },
+          {
+            "field": "items[0].igst_amount",
+            "expected": null,
+            "actual": "180.00"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "model": "qwen2.5vl:7b",
+        "latency_seconds": 12.179,
+        "input_tokens": 1497,
+        "output_tokens": 269
+      },
+      "llm_prediction": {
+        "document_type": "gst_invoice",
+        "invoice_number": "ITS-204",
+        "invoice_date": "15/10/2026",
+        "vendor_name": "Deccan Tech Supplies",
+        "vendor_gstin": "29ABCDE1234F1Z5",
+        "buyer_name": "Example Systems Ltd",
+        "buyer_gstin": null,
+        "currency": "INR",
+        "items": [
+          {
+            "description": "USB Keyboard",
+            "hsn_sac": null,
+            "quantity": "2",
+            "unit_price": "500.00",
+            "taxable_value": "1000.00",
+            "gst_rate": "18",
+            "cgst_amount": null,
+            "sgst_amount": null,
+            "igst_amount": "180.00",
+            "total_amount": null
+          }
+        ],
+        "subtotal": "1000.00",
+        "total_cgst": "0",
+        "total_sgst": "0",
+        "total_igst": "180.00",
+        "grand_total": "1180.00"
+      }
+    },
+    {
+      "document_id": "INV-003",
+      "rules": {
+        "correct_fields": 34,
+        "total_fields": 34,
+        "field_accuracy": 1.0,
+        "mismatches": []
+      },
+      "llm": {
+        "correct_fields": 28,
+        "total_fields": 34,
+        "field_accuracy": 0.8235294117647058,
+        "mismatches": [
+          {
+            "field": "items[0].gst_rate",
+            "expected": null,
+            "actual": "3"
+          },
+          {
+            "field": "items[0].cgst_amount",
+            "expected": null,
+            "actual": "45"
+          },
+          {
+            "field": "items[0].sgst_amount",
+            "expected": null,
+            "actual": "45"
+          },
+          {
+            "field": "items[1].gst_rate",
+            "expected": null,
+            "actual": "3"
+          },
+          {
+            "field": "items[1].cgst_amount",
+            "expected": null,
+            "actual": "45"
+          },
+          {
+            "field": "items[1].sgst_amount",
+            "expected": null,
+            "actual": "45"
+          }
+        ]
+      },
+      "llm_metadata": {
+        "model": "qwen2.5vl:7b",
+        "latency_seconds": 14.874,
+        "input_tokens": 1534,
+        "output_tokens": 328
+      },
+      "llm_prediction": {
+        "document_type": "gst_invoice",
+        "invoice_number": "MBM-882",
+        "invoice_date": "12/10/2026",
+        "vendor_name": "Metro Business Mart",
+        "vendor_gstin": "27ABCDE1234F1Z5",
+        "buyer_name": "Example Retail Pvt Ltd",
+        "buyer_gstin": null,
+        "currency": "INR",
+        "items": [
+          {
+            "description": "Notebook",
+            "hsn_sac": null,
+            "quantity": "5",
+            "unit_price": "100",
+            "taxable_value": "500",
+            "gst_rate": "3",
+            "cgst_amount": "45",
+            "sgst_amount": "45",
+            "igst_amount": null,
+            "total_amount": null
+          },
+          {
+            "description": "Desk Organizer",
+            "hsn_sac": null,
+            "quantity": "2",
+            "unit_price": "500",
+            "taxable_value": "1000",
+            "gst_rate": "3",
+            "cgst_amount": "45",
+            "sgst_amount": "45",
+            "igst_amount": null,
+            "total_amount": null
+          }
+        ],
+        "subtotal": "1500",
+        "total_cgst": "45.00",
+        "total_sgst": "45.00",
+        "total_igst": "0.00",
+        "grand_total": "1590"
+      }
+    }
+  ],
+  "totals": {
+    "rules_correct_fields": 92,
+    "rules_total_fields": 92,
+    "llm_correct_fields": 84,
+    "llm_total_fields": 92
+  },
+  "llm_usage": {
+    "input_tokens": 4579,
+    "output_tokens": 942,
+    "latency_seconds": [
+      25.515,
+      12.179,
+      14.874
+    ]
+  },
+  "summary": {
+    "rules_field_accuracy": 1.0,
+    "llm_field_accuracy": 0.9130434782608695,
+    "average_llm_latency_seconds": 17.522666666666666,
+    "estimated_cost_usd": null,
+    "cost_note": "Not calculated. Add LLM_INPUT_USD_PER_1M and LLM_OUTPUT_USD_PER_1M to .env for an estimate; verify rates with your provider."
+  }
+}

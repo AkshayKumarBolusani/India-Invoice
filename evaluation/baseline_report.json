@@ -1,0 +1,128 @@
+{
+  "correct_fields": 20,
+  "total_fields": 20,
+  "field_exact_match_accuracy": 1.0,
+  "document_exact_match": true,
+  "results": [
+    {
+      "field": "document_type",
+      "expected": "gst_invoice",
+      "predicted": "gst_invoice",
+      "correct": true
+    },
+    {
+      "field": "vendor_name",
+      "expected": "Sri Lakshmi Office Supplies",
+      "predicted": "Sri Lakshmi Office Supplies",
+      "correct": true
+    },
+    {
+      "field": "vendor_gstin",
+      "expected": "36ABCDE1234F1Z5",
+      "predicted": "36ABCDE1234F1Z5",
+      "correct": true
+    },
+    {
+      "field": "invoice_number",
+      "expected": "INV-2026-001",
+      "predicted": "INV-2026-001",
+      "correct": true
+    },
+    {
+      "field": "invoice_date",
+      "expected": "14/10/2026",
+      "predicted": "14/10/2026",
+      "correct": true
+    },
+    {
+      "field": "buyer_name",
+      "expected": "Example Technologies Pvt Ltd",
+      "predicted": "Example Technologies Pvt Ltd",
+      "correct": true
+    },
+    {
+      "field": "subtotal",
+      "expected": "2200.00",
+      "predicted": "2200.00",
+      "correct": true
+    },
+    {
+      "field": "total_cgst",
+      "expected": "198.00",
+      "predicted": "198.00",
+      "correct": true
+    },
+    {
+      "field": "total_sgst",
+      "expected": "198.00",
+      "predicted": "198.00",
+      "correct": true
+    },
+    {
+      "field": "total_igst",
+      "expected": "0.00",
+      "predicted": "0",
+      "correct": true
+    },
+    {
+      "field": "grand_total",
+      "expected": "2596.00",
+      "predicted": "2596.00",
+      "correct": true
+    },
+    {
+      "field": "item_count",
+      "expected": 2,
+      "predicted": 2,
+      "correct": true
+    },
+    {
+      "field": "items[0].description",
+      "expected": "Office Paper",
+      "predicted": "Office Paper",
+      "correct": true
+    },
+    {
+      "field": "items[0].quantity",
+      "expected": "2",
+      "predicted": "2",
+      "correct": true
+    },
+    {
+      "field": "items[0].unit_price",
+      "expected": "500.00",
+      "predicted": "500.00",
+      "correct": true
+    },
+    {
+      "field": "items[0].taxable_value",
+      "expected": "1000.00",
+      "predicted": "1000.00",
+      "correct": true
+    },
+    {
+      "field": "items[1].description",
+      "expected": "Printer Cartridge",
+      "predicted": "Printer Cartridge",
+      "correct": true
+    },
+    {
+      "field": "items[1].quantity",
+      "expected": "1",
+      "predicted": "1",
+      "correct": true
+    },
+    {
+      "field": "items[1].unit_price",
+      "expected": "1200.00",
+      "predicted": "1200.00",
+      "correct": true
+    },
+    {
+      "field": "items[1].taxable_value",
+      "expected": "1200.00",
+      "predicted": "1200.00",
+      "correct": true
+    }
+  ]
+}

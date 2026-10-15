@@ -1,0 +1,76 @@
+{
+  "records_audited": 1348,
+  "parsed_json_records": 1343,
+  "malformed_json_records": 5,
+  "unexpected_response_records": 0,
+  "records_with_recognized_items": 1343,
+  "recognized_item_count_total": 1343,
+  "schema_issue_records": 5,
+  "records_with_missing_required_response_fields": 0,
+  "records_with_source_evidence_gaps": 1343,
+  "source_core_field_not_found_total": 1373,
+  "source_item_description_not_found_total": 1007,
+  "arithmetic_failure_records": 1326,
+  "arithmetic_failure_checks": 1326,
+  "arithmetic_skipped_checks": 2686,
+  "arithmetic_skipped_by_reason": {
+    "item_taxable_values_vs_subtotal:missing_item_taxable_values": 1343,
+    "line_quantity_times_unit_price:missing_semantic_fields": 1343
+  },
+  "manual_review_records": 1331,
+  "suspicious_metadata_records": 0,
+  "metadata_type_counts": {
+    "is_duplicate": {
+      "missing": 1348
+    },
+    "all_found": {
+      "missing": 1348
+    },
+    "current_format": {
+      "missing": 1348
+    }
+  },
+  "manual_review_sample": [
+    {
+      "record_index": 1328,
+      "record_id_hash": "cd00e5467653d2c0"
+    },
+    {
+      "record_index": 1314,
+      "record_id_hash": "8344fa5a2f5f7b7d"
+    },
+    {
+      "record_index": 1308,
+      "record_id_hash": "e860956aabddb748"
+    },
+    {
+      "record_index": 1256,
+      "record_id_hash": "7f314e60092f28cc"
+    },
+    {
+      "record_index": 1115,
+      "record_id_hash": "31541df2a3c063e0"
+    },
+    {
+      "record_index": 1041,
+      "record_id_hash": "a6bd59e70ca30342"
+    },
+    {
+      "record_index": 992,
+      "record_id_hash": "7ef74d6ceb938746"
+    },
+    {
+      "record_index": 938,
+      "record_id_hash": "0facedf09ff78c79"
+    },
+    {
+      "record_index": 784,
+      "record_id_hash": "f953dc7d5a794ce7"
+    },
+    {
+      "record_index": 710,
+      "record_id_hash": "62fad8e516e04d88"
+    }
+  ],
+  "privacy": "Reports contain hashes, counts, types, and statuses only; invoice contents are omitted."
+}

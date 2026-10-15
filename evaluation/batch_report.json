@@ -1,0 +1,31 @@
+{
+  "dataset_size": 3,
+  "predictions_written": 3,
+  "extraction_failures": [],
+  "correct_fields": 56,
+  "total_fields": 56,
+  "field_exact_match_accuracy": 1.0,
+  "field_precision": 1.0,
+  "field_recall": 1.0,
+  "field_f1": 1.0,
+  "documents": [
+    {
+      "document_id": "INV-001",
+      "status": "PASS",
+      "correct_fields": 20,
+      "total_fields": 20
+    },
+    {
+      "document_id": "INV-002",
+      "status": "PASS",
+      "correct_fields": 16,
+      "total_fields": 16
+    },
+    {
+      "document_id": "INV-003",
+      "status": "PASS",
+      "correct_fields": 20,
+      "total_fields": 20
+    }
+  ]
+}

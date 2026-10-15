@@ -1,0 +1,15 @@
+TAX INVOICE
+
+Vendor: Synthetic Vendor 0010
+GSTIN: 27ABCDE1234F1Z5
+Invoice Number: SYN-2026-0010
+Invoice Date: 11/10/2026
+
+Buyer: Synthetic Buyer 0010
+| Description | Quantity | Unit Price | Taxable Value |
+| Synthetic Item 1 | 1.00 | 470.00 | 470.00 |
+CGST @ 9%: INR 42.30
+SGST @ 9%: INR 42.30
+Subtotal: INR 470.00
+Grand Total: INR 554.60
+Currency: INR

@@ -1,0 +1,467 @@
+{
+  "dataset": "synthetic_generated_invoice_benchmark",
+  "ground_truth": "constructed by generator",
+  "seed": 20261015,
+  "documents": 60,
+  "layouts": [
+    "compact",
+    "spaced",
+    "wrapped"
+  ],
+  "tax_modes": [
+    "cgst_sgst",
+    "igst"
+  ],
+  "item_count_range": [
+    1,
+    5
+  ],
+  "scalar_fields": [
+    "document_type",
+    "invoice_number",
+    "invoice_date",
+    "vendor_name",
+    "vendor_gstin",
+    "buyer_name",
+    "subtotal",
+    "total_cgst",
+    "total_sgst",
+    "total_igst",
+    "grand_total"
+  ],
+  "scalar_normalized_accuracy": 1.0,
+  "scalar_correct": 660,
+  "scalar_total": 660,
+  "line_item_precision": 1.0,
+  "line_item_recall": 1.0,
+  "line_item_f1": 1.0,
+  "line_items_matched": 180,
+  "line_items_predicted": 180,
+  "line_items_expected": 180,
+  "arithmetic_consistent_documents": 60,
+  "review_required_documents": 60,
+  "median_rules_pipeline_seconds": 0.0001425005029886961,
+  "llm_metrics": "not measured; no live model was invoked",
+  "documents_detail": [
+    {
+      "document_id": "SYN-0001",
+      "layout": "spaced",
+      "tax_mode": "igst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0002",
+      "layout": "wrapped",
+      "tax_mode": "cgst_sgst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0003",
+      "layout": "compact",
+      "tax_mode": "igst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0004",
+      "layout": "spaced",
+      "tax_mode": "cgst_sgst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0005",
+      "layout": "wrapped",
+      "tax_mode": "igst",
+      "item_count": 1,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0006",
+      "layout": "compact",
+      "tax_mode": "cgst_sgst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0007",
+      "layout": "spaced",
+      "tax_mode": "igst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0008",
+      "layout": "wrapped",
+      "tax_mode": "cgst_sgst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0009",
+      "layout": "compact",
+      "tax_mode": "igst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0010",
+      "layout": "spaced",
+      "tax_mode": "cgst_sgst",
+      "item_count": 1,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0011",
+      "layout": "wrapped",
+      "tax_mode": "igst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0012",
+      "layout": "compact",
+      "tax_mode": "cgst_sgst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0013",
+      "layout": "spaced",
+      "tax_mode": "igst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0014",
+      "layout": "wrapped",
+      "tax_mode": "cgst_sgst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0015",
+      "layout": "compact",
+      "tax_mode": "igst",
+      "item_count": 1,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0016",
+      "layout": "spaced",
+      "tax_mode": "cgst_sgst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0017",
+      "layout": "wrapped",
+      "tax_mode": "igst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0018",
+      "layout": "compact",
+      "tax_mode": "cgst_sgst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0019",
+      "layout": "spaced",
+      "tax_mode": "igst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0020",
+      "layout": "wrapped",
+      "tax_mode": "cgst_sgst",
+      "item_count": 1,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0021",
+      "layout": "compact",
+      "tax_mode": "igst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0022",
+      "layout": "spaced",
+      "tax_mode": "cgst_sgst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0023",
+      "layout": "wrapped",
+      "tax_mode": "igst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0024",
+      "layout": "compact",
+      "tax_mode": "cgst_sgst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0025",
+      "layout": "spaced",
+      "tax_mode": "igst",
+      "item_count": 1,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0026",
+      "layout": "wrapped",
+      "tax_mode": "cgst_sgst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0027",
+      "layout": "compact",
+      "tax_mode": "igst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0028",
+      "layout": "spaced",
+      "tax_mode": "cgst_sgst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0029",
+      "layout": "wrapped",
+      "tax_mode": "igst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0030",
+      "layout": "compact",
+      "tax_mode": "cgst_sgst",
+      "item_count": 1,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0031",
+      "layout": "spaced",
+      "tax_mode": "igst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0032",
+      "layout": "wrapped",
+      "tax_mode": "cgst_sgst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0033",
+      "layout": "compact",
+      "tax_mode": "igst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0034",
+      "layout": "spaced",
+      "tax_mode": "cgst_sgst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0035",
+      "layout": "wrapped",
+      "tax_mode": "igst",
+      "item_count": 1,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0036",
+      "layout": "compact",
+      "tax_mode": "cgst_sgst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0037",
+      "layout": "spaced",
+      "tax_mode": "igst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0038",
+      "layout": "wrapped",
+      "tax_mode": "cgst_sgst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0039",
+      "layout": "compact",
+      "tax_mode": "igst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0040",
+      "layout": "spaced",
+      "tax_mode": "cgst_sgst",
+      "item_count": 1,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0041",
+      "layout": "wrapped",
+      "tax_mode": "igst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0042",
+      "layout": "compact",
+      "tax_mode": "cgst_sgst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0043",
+      "layout": "spaced",
+      "tax_mode": "igst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0044",
+      "layout": "wrapped",
+      "tax_mode": "cgst_sgst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0045",
+      "layout": "compact",
+      "tax_mode": "igst",
+      "item_count": 1,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0046",
+      "layout": "spaced",
+      "tax_mode": "cgst_sgst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0047",
+      "layout": "wrapped",
+      "tax_mode": "igst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0048",
+      "layout": "compact",
+      "tax_mode": "cgst_sgst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0049",
+      "layout": "spaced",
+      "tax_mode": "igst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0050",
+      "layout": "wrapped",
+      "tax_mode": "cgst_sgst",
+      "item_count": 1,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0051",
+      "layout": "compact",
+      "tax_mode": "igst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0052",
+      "layout": "spaced",
+      "tax_mode": "cgst_sgst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0053",
+      "layout": "wrapped",
+      "tax_mode": "igst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0054",
+      "layout": "compact",
+      "tax_mode": "cgst_sgst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0055",
+      "layout": "spaced",
+      "tax_mode": "igst",
+      "item_count": 1,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0056",
+      "layout": "wrapped",
+      "tax_mode": "cgst_sgst",
+      "item_count": 2,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0057",
+      "layout": "compact",
+      "tax_mode": "igst",
+      "item_count": 3,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0058",
+      "layout": "spaced",
+      "tax_mode": "cgst_sgst",
+      "item_count": 4,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0059",
+      "layout": "wrapped",
+      "tax_mode": "igst",
+      "item_count": 5,
+      "status": "review_required"
+    },
+    {
+      "document_id": "SYN-0060",
+      "layout": "compact",
+      "tax_mode": "cgst_sgst",
+      "item_count": 1,
+      "status": "review_required"
+    }
+  ]
+}
