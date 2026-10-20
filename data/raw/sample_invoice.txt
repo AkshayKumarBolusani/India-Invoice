@@ -1,0 +1,18 @@
+TAX INVOICE
+
+Vendor: Sri Lakshmi Office Supplies
+GSTIN: 36ABCDE1234F1Z5
+Invoice Number: INV-2026-001
+Invoice Date: 14/10/2026
+
+Buyer: Example Technologies Pvt Ltd
+
+Description          Qty    Rate     Taxable Value
+Office Paper         2      500.00   1000.00
+Printer Cartridge    1      1200.00  1200.00
+
+Subtotal: 2200.00
+CGST @ 9%: 198.00
+SGST @ 9%: 198.00
+Grand Total: 2596.00
+Currency: INR

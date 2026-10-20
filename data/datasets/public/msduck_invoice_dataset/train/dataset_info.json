@@ -1,0 +1,67 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "invoice_dataset",
+  "dataset_size": 2539965,
+  "description": "",
+  "download_size": 2528830,
+  "features": {
+    "doc_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "language": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "messages": {
+      "feature": {
+        "role": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "content": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "_type": "List"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 5068795,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 2027828,
+      "num_examples": 1074,
+      "dataset_name": "invoice_dataset"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 255259,
+      "num_examples": 134,
+      "dataset_name": "invoice_dataset"
+    },
+    "catastrophic_forgetting_benchmark": {
+      "name": "catastrophic_forgetting_benchmark",
+      "num_bytes": 1372,
+      "num_examples": 5,
+      "dataset_name": "invoice_dataset"
+    },
+    "test_golden": {
+      "name": "test_golden",
+      "num_bytes": 255506,
+      "num_examples": 135,
+      "dataset_name": "invoice_dataset"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}

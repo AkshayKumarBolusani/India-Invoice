@@ -39,3 +39,25 @@ node_modules/
 .venv-*/
 paper/*.out
 frontend/tsconfig.tsbuildinfo
+
+# Explicitly tracked public benchmark dataset and synthetic demo fixtures
+!data/raw/sample_invoice.pdf
+!data/raw/sample_invoice.txt
+!data/processed/sample_invoice.json
+!data/processed/extracted_invoice.json
+!data/samples/INV-*.pdf
+!data/samples/layout_stress/
+!data/samples/layout_stress/*.pdf
+!data/datasets/public/msduck_invoice_dataset/
+!data/datasets/public/msduck_invoice_dataset/**
+
+# Explicitly tracked public benchmark dataset and synthetic demo fixtures
+!data/raw/sample_invoice.pdf
+!data/raw/sample_invoice.txt
+!data/processed/sample_invoice.json
+!data/processed/extracted_invoice.json
+!data/samples/INV-*.pdf
+!data/samples/layout_stress/
+!data/samples/layout_stress/*.pdf
+!data/datasets/public/msduck_invoice_dataset/
+!data/datasets/public/msduck_invoice_dataset/**

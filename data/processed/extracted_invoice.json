@@ -1,0 +1,41 @@
+{
+  "document_type": "gst_invoice",
+  "invoice_number": "INV-2026-001",
+  "invoice_date": "14/10/2026",
+  "vendor_name": "Sri Lakshmi Office Supplies",
+  "vendor_gstin": "36ABCDE1234F1Z5",
+  "buyer_name": "Example Technologies Pvt Ltd",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "items": [
+    {
+      "description": "Office Paper",
+      "hsn_sac": null,
+      "quantity": "2",
+      "unit_price": "500.00",
+      "taxable_value": "1000.00",
+      "gst_rate": null,
+      "cgst_amount": null,
+      "sgst_amount": null,
+      "igst_amount": null,
+      "total_amount": null
+    },
+    {
+      "description": "Printer Cartridge",
+      "hsn_sac": null,
+      "quantity": "1",
+      "unit_price": "1200.00",
+      "taxable_value": "1200.00",
+      "gst_rate": null,
+      "cgst_amount": null,
+      "sgst_amount": null,
+      "igst_amount": null,
+      "total_amount": null
+    }
+  ],
+  "subtotal": "2200.00",
+  "total_cgst": "198.00",
+  "total_sgst": "198.00",
+  "total_igst": "0",
+  "grand_total": "2596.00"
+}

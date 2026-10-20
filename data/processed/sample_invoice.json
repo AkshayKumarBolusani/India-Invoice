@@ -1,0 +1,6 @@
+{
+  "filename": "sample_invoice.txt",
+  "markdown": "TAX INVOICE\n\nVendor: Sri Lakshmi Office Supplies\nGSTIN: 36ABCDE1234F1Z5\nInvoice Number: INV-2026-001\nInvoice Date: 14/10/2026\n\nBuyer: Example Technologies Pvt Ltd\n\nDescription          Qty    Rate     Taxable Value\nOffice Paper         2      500.00   1000.00\nPrinter Cartridge    1      1200.00  1200.00\n\nSubtotal: 2200.00\nCGST @ 9%: 198.00\nSGST @ 9%: 198.00\nGrand Total: 2596.00\nCurrency: INR\n\n",
+  "text_length": 396,
+  "method": "direct_text"
+}
