@@ -247,7 +247,7 @@ Keep synthetic tests separate from real-world claims, preserve privacy boundarie
 India-Invoice AI is an independently developed project focused on invoice document ingestion, structured extraction, validation, and evaluation.
 
 - **LinkedIn:** [Akshay Kumar Bolusani](https://www.linkedin.com/in/akshaykumarbolusani/)
-- **Portfolio:** [akshaybolusani-portfolio.vercel.app](https://akshaybolusani-portfolio.vercel.app/)
+- **Portfolio:** [akshaybolusani-portfolio.vercel.app](https://akshaykumarbolusani.vercel.app/)
 - **GitHub:** [AkshayKumarBolusani](https://github.com/AkshayKumarBolusani)
 - **Project repository:** [India-Invoice AI](https://github.com/AkshayKumarBolusani/India-Invoice)
 
