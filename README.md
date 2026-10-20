@@ -240,6 +240,19 @@ cd frontend && npm test && npm run typecheck && npm run build
 
 Keep synthetic tests separate from real-world claims, preserve privacy boundaries, and add a regression test for behavior changes.
 
+## Author & Maintainer
+
+**Akshay Kumar Bolusani** — Software Engineer and AI/ML Developer.
+
+India-Invoice AI is an independently developed project focused on invoice document ingestion, structured extraction, validation, and evaluation.
+
+- **LinkedIn:** [Akshay Kumar Bolusani](https://www.linkedin.com/in/akshaykumarbolusani/)
+- **Portfolio:** [akshaybolusani-portfolio.vercel.app](https://akshaybolusani-portfolio.vercel.app/)
+- **GitHub:** [AkshayKumarBolusani](https://github.com/AkshayKumarBolusani)
+- **Project repository:** [India-Invoice AI](https://github.com/AkshayKumarBolusani/India-Invoice)
+
+For questions, suggestions, or collaboration, connect through LinkedIn or open an issue in the repository.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
