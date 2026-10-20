@@ -1,0 +1,92 @@
+{
+  "protocol": "injection v1; intended-signal matching; tolerance=1.00 default",
+  "n_documents": 60,
+  "baseline_valid": 60,
+  "classes": {
+    "grand_total_drift": {
+      "kind": "error",
+      "n_applicable": 60,
+      "caught_intended": 60,
+      "catch_rate": 1.0,
+      "flagged_any": 60
+    },
+    "subtotal_drift": {
+      "kind": "error",
+      "n_applicable": 60,
+      "caught_intended": 60,
+      "catch_rate": 1.0,
+      "flagged_any": 60
+    },
+    "line_taxable_drift": {
+      "kind": "error",
+      "n_applicable": 60,
+      "caught_intended": 60,
+      "catch_rate": 1.0,
+      "flagged_any": 60
+    },
+    "tax_total_drift": {
+      "kind": "error",
+      "n_applicable": 60,
+      "caught_intended": 60,
+      "catch_rate": 1.0,
+      "flagged_any": 60
+    },
+    "gstin_format_break": {
+      "kind": "error",
+      "n_applicable": 60,
+      "caught_intended": 60,
+      "catch_rate": 1.0,
+      "flagged_any": 60
+    },
+    "missing_grand_total": {
+      "kind": "error",
+      "n_applicable": 60,
+      "caught_intended": 60,
+      "catch_rate": 1.0,
+      "flagged_any": 60
+    },
+    "duplicated_allocation": {
+      "kind": "warning",
+      "n_applicable": 48,
+      "caught_intended": 48,
+      "catch_rate": 1.0,
+      "flagged_any": 48
+    },
+    "invented_consistent_split": {
+      "kind": "control",
+      "n_applicable": 30,
+      "false_flagged": 0,
+      "false_flag_rate": 0.0
+    },
+    "benign_comma_format": {
+      "kind": "control",
+      "n_applicable": 60,
+      "false_flagged": 0,
+      "false_flag_rate": 0.0
+    },
+    "benign_currency_symbol": {
+      "kind": "control",
+      "n_applicable": 60,
+      "false_flagged": 0,
+      "false_flag_rate": 0.0
+    }
+  },
+  "tolerance_probes": {
+    "grand_total_plus_0_50": {
+      "mutation": "grand_total + 0.50",
+      "expected_flag": false,
+      "n_applicable": 60,
+      "flagged_any": 0,
+      "caught_intended": 0,
+      "flag_rate": 0.0
+    },
+    "grand_total_plus_2_00": {
+      "mutation": "grand_total + 2.00",
+      "expected_flag": true,
+      "n_applicable": 60,
+      "flagged_any": 60,
+      "caught_intended": 60,
+      "flag_rate": 1.0
+    }
+  }
+}

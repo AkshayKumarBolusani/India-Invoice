@@ -33,4 +33,9 @@ data/datasets/public/*
 
 # Real-world evaluation documents and labels
 evaluation/real_world/*
-!evaluation/real_world/.gitkeep
+!evaluation/real_world/.gitkeep*.py[cod]
+*.egg-info/
+node_modules/
+.venv-*/
+paper/*.out
+frontend/tsconfig.tsbuildinfo
